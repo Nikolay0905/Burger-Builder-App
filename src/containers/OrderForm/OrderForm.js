@@ -8,6 +8,8 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import Input from "../../components/UI/Inputs/Input";
 
 import axios from "../../axiosOrders";
+import { ROUTES } from "../../routes";
+
 import "./OrderForm.css";
 
 class OrderForm extends Component {
@@ -131,7 +133,7 @@ class OrderForm extends Component {
 		this.props.burgerPurchasing(order, this.props.token);
 
 		this.setState({ loading: true });
-		this.props.history.push("/");
+		this.props.history.push(ROUTES.burger);
 	};
 
 	inputChangedHandler = (event, inputIdentifier) => {

@@ -5,14 +5,16 @@ import { connect } from "react-redux";
 import CheckoutSummary from "../../components/Other/CheckoutSummary/CheckoutSummary";
 import OrderForm from "../OrderForm/OrderForm";
 
+import { ROUTES } from "../../routes";
+
 const checkout = (props) => {
 	const goToOrderForm = () => {
-		props.history.push(props.match.url + "/orderForm");
+		props.history.push(props.match.url + ROUTES.orderForm);
 	};
 	const cancelOrdering = () => {
 		props.history.goBack();
 	};
-	let summary = <Redirect to="/"></Redirect>;
+	let summary = <Redirect to={ROUTES.burger}></Redirect>;
 
 	if (props.ingredients) {
 		summary = (

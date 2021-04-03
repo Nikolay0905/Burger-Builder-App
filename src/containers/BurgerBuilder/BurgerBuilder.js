@@ -11,6 +11,8 @@ import axios from "../../axiosOrders";
 import { connect } from "react-redux";
 import * as actionCreator from "../../Store/Actions/compiled";
 
+import { ROUTES } from "../../routes";
+
 class BurgerBuilder extends Component {
 	state = {
 		purchasing: false,
@@ -40,7 +42,7 @@ class BurgerBuilder extends Component {
 	};
 
 	continuePurchasingHandler = () => {
-		this.props.history.push("/checkout");
+		this.props.history.push(ROUTES.checkout);
 	};
 
 	render() {
@@ -65,6 +67,7 @@ class BurgerBuilder extends Component {
 				<React.Fragment>
 					<Burger ingredients={this.props.ingredients} />
 					<BuildControls
+						isAuth={this.props.isAuthenticated}
 						addIngredients={this.props.addIngredient}
 						removeIngredients={this.props.removeIngredient}
 						disabeledIngredient={disabeledInfo}
@@ -106,6 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 		ingredients: state.burger.ingredients,
 		total: state.burger.totalPrice,
 		error: state.burger.error,
+		isAuthenticated: state.auth.idToken !== null,
 	};
 };
 

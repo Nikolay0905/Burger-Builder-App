@@ -2,16 +2,20 @@ import React from "react";
 import NavigationItem from "./Navigation_Item/NavigationItem";
 import classes from "./NavigationItems.module.css";
 
+import { ROUTES } from "../../../routes";
+
 const navigationItems = (props) => (
 	<div className={classes.NavigationItems}>
-		<NavigationItem link="/burger" exact>
+		<NavigationItem link={ROUTES.burger} exact>
 			Burger Builder
 		</NavigationItem>
-		<NavigationItem link="/orders">Orders</NavigationItem>
+		{props.isAuthenticated ? (
+			<NavigationItem link={ROUTES.orders}>Orders</NavigationItem>
+		) : null}
 		{!props.isAuthenticated ? (
-			<NavigationItem link="/authentication">Authenticate</NavigationItem>
+			<NavigationItem link={ROUTES.authentication}>Authenticate</NavigationItem>
 		) : (
-			<NavigationItem link="/logout">Logout</NavigationItem>
+			<NavigationItem link={ROUTES.logout}>Logout</NavigationItem>
 		)}
 	</div>
 );

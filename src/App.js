@@ -7,8 +7,9 @@ import Orders from "./containers/Orders/Orders";
 import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/Logout";
 import NotFound from "./components/Other/NotFoundPage/NotFound";
+import { ROUTES } from "./routes";
 
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
 	render() {
@@ -17,11 +18,11 @@ class App extends Component {
 				<div>
 					<Layout>
 						<Switch>
-							<Route path="/burger" component={BurgerBuilder} />
-							<Route path="/checkout" component={Checkout} />
-							<Route path="/orders" component={Orders} />
-							<Route path="/authentication" component={Auth} />
-							<Route path="/logout" component={Logout} />
+							<Route exact path={ROUTES.burger} component={BurgerBuilder} />
+							<Route path={ROUTES.checkout} component={Checkout} />
+							<Route path={ROUTES.orders} component={Orders} />
+							<Route path={ROUTES.authentication} component={Auth} />
+							<Route path={ROUTES.logout} component={Logout} />
 							<Route component={NotFound} />
 						</Switch>
 					</Layout>
