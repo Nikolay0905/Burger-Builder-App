@@ -11,8 +11,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ingredientReducer from "./Store/Reducers/ingredientReducer";
 import orderReducer from "./Store/Reducers/orderReducer";
-
-const reducer = combineReducers({burger: ingredientReducer, orders: orderReducer});
+import authReducer from "./Store/Reducers/auth";
+const reducer = combineReducers({
+	burger: ingredientReducer,
+	orders: orderReducer,
+	auth: authReducer,
+});
 
 const composeEnhancers =
 	(window.__REDUX_DEVTOOLS_EXTENSION__ &&

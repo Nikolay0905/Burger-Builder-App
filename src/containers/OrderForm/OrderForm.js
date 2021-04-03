@@ -128,7 +128,7 @@ class OrderForm extends Component {
 			userData: formData,
 		};
 
-		this.props.burgerPurchasing(order);
+		this.props.burgerPurchasing(order, this.props.token);
 
 		this.setState({ loading: true });
 		this.props.history.push("/");
@@ -203,13 +203,14 @@ const mapStateToProps = (state) => {
 		ingredients: state.burger.ingredients,
 		total: state.burger.totalPrice,
 		loading: state.orders.loading,
+		token: state.auth.idToken,
 	};
 };
 
 const dispatchActions = (dispatch) => {
 	return {
-		burgerPurchasing: (orderData) =>
-			dispatch(orderActions.purchaseBurger(orderData)),
+		burgerPurchasing: (orderData, token) =>
+			dispatch(orderActions.purchaseBurger(orderData, token)),
 	};
 };
 
