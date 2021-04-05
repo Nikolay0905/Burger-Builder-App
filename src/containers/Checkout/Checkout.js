@@ -12,7 +12,7 @@ const checkout = (props) => {
 		props.history.push(props.match.url + ROUTES.orderForm);
 	};
 	const cancelOrdering = () => {
-		props.history.goBack();
+		props.history.push(ROUTES.burger);
 	};
 	let summary = <Redirect to={ROUTES.burger}></Redirect>;
 

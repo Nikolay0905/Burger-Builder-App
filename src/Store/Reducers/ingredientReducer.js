@@ -6,6 +6,7 @@ const initialState = {
 	ingredients: null,
 	totalPrice: 4.0,
 	error: false,
+	burgerBuilding: false,
 };
 
 const INGREDIENTS_PRICE = {
@@ -22,6 +23,7 @@ const addIngredient = (state, action) => {
 			[action.ingType]: state.ingredients[action.ingType] + 1,
 		},
 		totalPrice: state.totalPrice + INGREDIENTS_PRICE[action.ingType],
+		burgerBuilding: true,
 	});
 };
 
@@ -32,6 +34,7 @@ const removeIngredient = (state, action) => {
 			[action.ingType]: state.ingredients[action.ingType] - 1,
 		},
 		totalPrice: state.totalPrice - INGREDIENTS_PRICE[action.ingType],
+		burgerBuilding: true,
 	});
 };
 
@@ -45,6 +48,7 @@ const setIngredients = (state, action) => {
 		},
 		error: false,
 		totalPrice: 4,
+		burgerBuilding: false,
 	});
 };
 

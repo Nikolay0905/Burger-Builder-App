@@ -128,7 +128,10 @@ class OrderForm extends Component {
 			ingredients: this.props.ingredients,
 			price: this.props.total.toFixed(2),
 			userData: formData,
+			userId: this.props.userId,
 		};
+
+		console.log(order);
 
 		this.props.burgerPurchasing(order, this.props.token);
 
@@ -206,6 +209,7 @@ const mapStateToProps = (state) => {
 		total: state.burger.totalPrice,
 		loading: state.orders.loading,
 		token: state.auth.idToken,
+		userId: state.auth.userId,
 	};
 };
 

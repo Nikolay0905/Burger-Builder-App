@@ -12,6 +12,7 @@ import reportWebVitals from "./reportWebVitals";
 import ingredientReducer from "./Store/Reducers/ingredientReducer";
 import orderReducer from "./Store/Reducers/orderReducer";
 import authReducer from "./Store/Reducers/auth";
+
 const reducer = combineReducers({
 	burger: ingredientReducer,
 	orders: orderReducer,

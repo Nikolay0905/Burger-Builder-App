@@ -8,6 +8,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.module.css";
 
 import * as actions from "../../Store/Actions/compiled";
+import { ROUTES } from "../../routes";
 
 class Auth extends Component {
 	state = {
@@ -128,13 +129,19 @@ class Auth extends Component {
 		let errorMessage = null;
 
 		if (this.props.error) {
-			console.log(this.props.error);
 			errorMessage = <p>{this.props.error.message}</p>;
+		}
+
+		if (this.props.isAuthenticated && this.props.isBuilding) {
+			this.props.history.push(ROUTES.checkout);
+		} else if (this.props.isAuthenticated && !this.props.isBuilding) {
+			this.props.history.push(ROUTES.burger);
 		}
 
 		return (
 			<div className={classes.Auth}>
 				{errorMessage}
+
 				<form onSubmit={(e) => this.authenticate(e)}>
 					{formInputs}
 					<Button btnType="Success">SUBMIT</Button>
@@ -151,6 +158,8 @@ const mapStateToProps = (state) => {
 	return {
 		loading: state.auth.loading,
 		error: state.auth.error,
+		isAuthenticated: state.auth.idToken !== null,
+		isBuilding: state.burger.burgerBuilding,
 	};
 };
 const mapDispatchToProps = (dispatch, action) => {

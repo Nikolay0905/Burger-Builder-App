@@ -6,4 +6,4 @@ export {
 
 export { fetchOrdersFailed, fetchOrders, purchaseBurger } from "./orderActions";
 
-export { auth, logout } from "./auth";
+export { auth, logout, autoAuthenticate } from "./auth";

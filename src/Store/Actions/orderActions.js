@@ -20,7 +20,7 @@ export const fetchOrdersStart = () => {
 	};
 };
 
-export const fetchOrders = (token) => {
+export const fetchOrders = (token, userId) => {
 	return (dispatch) => {
 		fetchOrdersStart();
 		axios
@@ -28,11 +28,17 @@ export const fetchOrders = (token) => {
 			.then((response) => {
 				const fetchedOrders = [];
 				for (const key in response.data) {
-					fetchedOrders.push({ ...response.data[key], id: key });
+					console.log(key);
+					if (response.data[key].userId === userId) {
+						fetchedOrders.push({ ...response.data[key], id: key });
+					}
 				}
 				dispatch(syncedOrderAction(fetchedOrders));
 			})
-			.catch((err) => dispatch(fetchOrdersFailed(err)));
+			.catch((err) => {
+				console.log(err);
+				dispatch(fetchOrdersFailed(err));
+			});
 	};
 };
 
@@ -51,7 +57,7 @@ export const syncedBurgerPurchasing = (id, orderData) => {
 	};
 };
 
-export const purchaseBurger = (orderData , token) => {
+export const purchaseBurger = (orderData, token) => {
 	return (dispatch) => {
 		dispatch(purchaseBurgerStart());
 		axios
