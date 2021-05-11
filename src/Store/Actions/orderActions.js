@@ -28,7 +28,6 @@ export const fetchOrders = (token, userId) => {
 			.then((response) => {
 				const fetchedOrders = [];
 				for (const key in response.data) {
-					console.log(key);
 					if (response.data[key].userId === userId) {
 						fetchedOrders.push({ ...response.data[key], id: key });
 					}

@@ -8,6 +8,7 @@ import { ROUTES } from "../../../routes";
 class Logout extends Component {
 	componentDidMount() {
 		this.props.logout();
+		console.log("Logout");
 	}
 
 	render() {
