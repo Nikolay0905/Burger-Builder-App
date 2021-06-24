@@ -4,7 +4,7 @@ import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/Side_Drawer/SideDrawer";
 import { connect } from "react-redux";
 
-class layout extends Component {
+class Layout extends Component {
 	state = {
 		showSideDrawer: false,
 	};
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps)(layout);
+export default connect(mapStateToProps)(Layout);

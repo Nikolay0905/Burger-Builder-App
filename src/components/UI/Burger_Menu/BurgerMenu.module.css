@@ -1,23 +1,21 @@
 .BurgerMenu {
-  display: flex;
-  flex-flow: column;
-  width: 6%;
-  height: 100%;
-  justify-content: center;
-  cursor: pointer;
+	display: none;
+	flex-flow: column;
+	width: 6%;
+	height: 100%;
+	justify-content: center;
+	cursor: pointer;
 }
 
 .Line {
-  width: 100%;
-  height: 3px;
-  margin-bottom: 4px;
-  background-color: #fff;
+	width: 100%;
+	height: 3px;
+	margin-bottom: 4px;
+	background-color: #fff;
 }
 
-.Show {
-  display: flex;
-}
-
-.notShow {
-  display: none;
+@media (max-width: 499px) {
+	.BurgerMenu {
+		display: flex;
+	}
 }
